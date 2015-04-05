@@ -1,0 +1,21 @@
+services:
+    sonata.admin.user:
+        class: AppBundle\Admin\UserAdmin
+        arguments: [~, AppBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "User", label: "User" }
+    sonata.admin.article:
+        class: AppBundle\Admin\ArticleAdmin
+        arguments: [~, AppBundle\Entity\Article, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Article", label: "Article" }
+    sonata.admin.category:
+        class: AppBundle\Admin\CategoryAdmin
+        arguments: [~, AppBundle\Entity\Category, ~]
+        tags:
+             - { name: sonata.admin, manager_type: orm, group: "Article", label: "Category" }
+    sonata.admin.tag:
+        class: AppBundle\Admin\TagAdmin
+        arguments: [~, AppBundle\Entity\Tag, ~]
+        tags:
+             - { name: sonata.admin, manager_type: orm, group: "Article", label: "Tag" }

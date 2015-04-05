@@ -1,0 +1,89 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <section class="row">
+        <h1>Article list
+        <a class="btn btn-primary" href="{{ url('article_create') }}">
+            <i class="glyphicon glyphicon-plus-sign"></i>
+            Ajouter
+        </a></h1>
+        {% for article in article %}
+            <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <header>
+                    <figure>
+                        <img src="{{ article.picture }}" alt="picture" title="{{ article.name }}" style="width:25%">
+                        <figcaption>
+                            <h1>{{ article.name }}</h1>
+                        </figcaption>
+                    </figure>
+                </header>
+                <p>{{ article.content }}</p>
+                <footer>
+                    <p>
+                        Released on tag
+                    </p>
+                </footer>
+                <aside>
+                    <div class="btn-group" role="group" aria-label="actions">
+                        <a href="{{ path('article_show', {'id': article.id}) }}" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-king"></i>
+                            Show
+                        </a>
+                        <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-warning">
+                            <i class="glyphicon glyphicon-edit"></i>
+                            Edit
+                        </a>
+                        <!--<a href="#" class="btn btn-danger">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            Remove
+                        </a>-->
+                    </div>
+                </aside>
+            </article>
+        {% endfor %}
+    </section>
+
+    {#<table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Releasedat</th>
+                <th>Summary</th>
+                <th>Picture</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('articles_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{% if entity.releasedAt %}{{ entity.releasedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.summary }}</td>
+                <td>{{ entity.picture }}</td>
+                <td>{{ entity.country }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('articles_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('articles_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('articles_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>#}
+{% endblock %}
